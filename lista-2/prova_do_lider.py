@@ -1,5 +1,3 @@
-# letra = input()
-# numero = int(input())
 letra = input()
 numero = int(input()) 
 
