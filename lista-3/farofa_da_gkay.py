@@ -1,4 +1,3 @@
-entrada = input()
 fim_lista = False
 comando = ''
 convidados = []
@@ -19,9 +18,12 @@ while not fim_lista:
 
         comando = input().split()
         nome, index = comando
+        nome_antigo = convidados[int(index)]
         convidados_buffer = convidados.copy()
-        convidados[int(index)], convidados[convidados.index(nome)] = convidados[convidados.index(nome)], convidados[int(index())]
-
+        posicao_antiga = convidados.index(nome)
+        convidados[int(index)] = nome
+        convidados[posicao_antiga] = nome_antigo
+        
         if convidados == convidados_buffer:
             print('Nada mudou, a lista permanece igual')
             
