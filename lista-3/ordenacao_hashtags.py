@@ -1,7 +1,7 @@
 qtd_hashtags = int(input())
 hashtags = []
 flag = False
-
+''.split()
 while qtd_hashtags > 0:
     hashtag = input()
     for character in hashtag:
