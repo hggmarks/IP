@@ -1,18 +1,18 @@
 from typing import Union
 
-def bin_search(sorted_list: list, term: Union[str, int], low: int, high: int) -> tuple:
+def bin_search(sorted_list: list, term: Union[str, int], low: int, high: int, index_offset: int = 0) -> tuple:
 
     if low <= high:
         mid = (low + high) // 2
         
         if term == sorted_list[mid]:
-            return mid, sorted_list[mid]
+            return mid+index_offset, sorted_list[mid]
         
         elif term > sorted_list[mid]:
-            return bin_search(sorted_list, term, mid+1, high)
+            return bin_search(sorted_list, term, mid+1, high, index_offset)
         
             
-        return bin_search(sorted_list, term, low, mid-1)
+        return bin_search(sorted_list, term, low, mid-1, index_offset)
         
     else:
         return (-1, -1)
@@ -38,35 +38,20 @@ if __name__ == '__main__':
 
         low = 0
         high = len(books)-1
-        weapow_index, weapow_name = bin_search(books, WEAPOW_NAME, low, high)
-        weapow_power = weapow_index*7
-        weapow_power = get_capicua(weapow_power)
+        weapow_index, weapow_name = bin_search(books, WEAPOW_NAME, low, high, 1)
 
-        
-        
+        if weapow_index == -1:
+            print('Mamma mia! Só Mario poderá me salvar agora!')
 
+        else:
+            weapow_power = weapow_index*7
+            weapow_power = get_capicua(weapow_power)
 
-
-arr = [3,7,9,11,14,19,24,29,39]
-
-element = 49
-
-a = bin_search(arr, element, low, high)
-
-print(a)
-
-
-#if __name__ == '__main__':
-#    WEAPOW_NAME = 'Ghost Potrificationizer - E. Gadd'
-#    num_inputs = int(input()) 
-#    counter = num_inputs
-#    weapow_index = 0
-#    while counter > 0:
-#        name = input()
-#        if name = WEAPOW_NAME:
-#            weapow_index = num_inputs - counter
-#
-#        counter -= 1
-#
-#    weapow_power = weapow_index*7
-
+            if weapow_power < 50:
+                print('É uma catástrofe, eu tenho a arma mas só posso usá-la uma vez')
+            elif weapow_power < 100:
+                print('Terei que usar a minha arma com sabedoria!')
+            elif weapow_power < 200:
+                print('A arma está bem carregada, me dei bem!')
+            else:
+                print('Aha! EU NÃO TENHO MAIS MEDO DE NADA! PODEM VIR!')
